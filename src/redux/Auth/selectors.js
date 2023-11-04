@@ -13,3 +13,7 @@ export const selectAuthAuthenticated = createSelector(
   selectAuth,
   auth => auth.authenticated
 );
+export const selectAuthUserEmail = createSelector(
+  selectAuthUserData,
+  userData => userData.email
+);
