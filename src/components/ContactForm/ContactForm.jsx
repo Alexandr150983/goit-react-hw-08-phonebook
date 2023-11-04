@@ -1,16 +1,15 @@
-import { nanoid } from 'nanoid';
 import { Form as FormikForm, Label, Button } from './ContactForm.styled';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { object, string } from 'yup';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/Contact/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addContact } from 'redux/Contact/operations';
 
 const schema = object({
   name: string().min(3, 'must be at least 3 characters long').required(),
-  phone: string()
+  number: string()
     .matches(
       /^(?:\+38)?(?:\d{10}|\d{3}[-\s]\d{3}[-\s]\d{4}|\(\d{3}\)[-.\s]\d{3}[-.\s]\d{4})$/,
       'Invalid phone number format. Use Ukrainian format, e.g., +380501234567'
@@ -20,7 +19,7 @@ const schema = object({
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 export function ContactForm() {
@@ -28,20 +27,20 @@ export function ContactForm() {
   const contacts = useSelector(selectContacts);
 
   const handleSubmit = (values, { resetForm }) => {
-    const isDuplicate = contacts.some(
-      contact => contact.name === values.name || contact.phone === values.phone
-    );
-
-    if (isDuplicate) {
+    if (
+      contacts?.some(
+        contact =>
+          contact.name === values.name || contact.number === values.number
+      )
+    ) {
       toast.error('Цей контакт вже існує.', {
         position: 'top-right',
         autoClose: 3000,
       });
     } else {
       const newContact = {
-        id: nanoid(),
         name: values.name,
-        phone: values.phone,
+        number: values.number,
       };
       dispatch(addContact(newContact)).then(() => {
         toast.success('Контакт успішно додано!', {
@@ -52,7 +51,6 @@ export function ContactForm() {
       resetForm();
     }
   };
-
   return (
     <Formik
       initialValues={initialValues}
@@ -68,8 +66,8 @@ export function ContactForm() {
         <br />
         <Label>
           Phone
-          <Field type="tel" name="phone" />
-          <ErrorMessage name="phone" />
+          <Field type="tel" name="number" />
+          <ErrorMessage name="number" />
         </Label>
         <br />
         <Button type="submit">Add contact</Button>
