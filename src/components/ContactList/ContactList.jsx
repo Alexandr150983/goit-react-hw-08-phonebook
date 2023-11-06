@@ -169,31 +169,30 @@ export const ContactList = () => {
         </Box>
       )}
 
-      <Flex justifyContent="center" mt={4}>
-        <HStack spacing={2}>
-          <ReactPaginate
-            pageCount={Math.ceil(filteredContacts.length / itemsPerPage)}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            onPageChange={handlePageChange}
-            previousLabel={
-              <IconButton
-                icon={<ChevronLeftIcon />}
-                size="sm"
-                aria-label="Previous"
-                colorScheme="teal"
-              />
-            }
-            nextLabel={
-              <IconButton
-                icon={<ChevronRightIcon />}
-                size="sm"
-                aria-label="Next"
-                colorScheme="teal"
-              />
-            }
-          />
-        </HStack>
+      <Flex justifyContent="center" mt={4} align="center">
+        <ReactPaginate
+          pageCount={Math.ceil(filteredContacts.length / itemsPerPage)}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageChange}
+          previousLabel={
+            <IconButton
+              icon={<ChevronLeftIcon />}
+              size="sm"
+              aria-label="Previous"
+              colorScheme="teal"
+            />
+          }
+          nextLabel={
+            <IconButton
+              icon={<ChevronRightIcon />}
+              size="sm"
+              aria-label="Next"
+              colorScheme="teal"
+            />
+          }
+          containerClassName="pagination" // Додайте клас контейнера
+        />
       </Flex>
     </Box>
   );
