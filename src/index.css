@@ -18,3 +18,28 @@ code {
 ul {
   list-style: none;
 }
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  margin-right: 5px;
+}
+
+.pagination a {
+  display: block;
+  padding: 5px 10px;
+  color: black;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pagination .selected a {
+  background-color: teal;
+  color: white;
+}
