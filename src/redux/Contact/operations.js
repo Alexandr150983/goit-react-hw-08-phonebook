@@ -3,6 +3,7 @@ import {
   requestAddContact,
   requestAllContacts,
   requestDeleteContact,
+  requestUpdateContact,
 } from 'Services/api';
 
 export const fetchContacts = createAsyncThunk(
@@ -37,6 +38,19 @@ export const deleteContact = createAsyncThunk(
       const deletedContact = await requestDeleteContact(contactId);
 
       return deletedContact;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateContact = createAsyncThunk(
+  'contacts/update',
+  async (contactId, thunkAPI) => {
+    try {
+      const updatedContact = await requestUpdateContact(contactId);
+
+      return updatedContact;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

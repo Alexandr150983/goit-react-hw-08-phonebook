@@ -1,6 +1,5 @@
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
-import { Filter } from 'components/Filter/Filter';
 import { ToastContainer } from 'react-toastify';
 
 export default function Contacts() {
@@ -10,7 +9,6 @@ export default function Contacts() {
       <ContactForm />
       <ToastContainer />
       <h2>Contacts</h2>
-      <Filter />
       <ContactList />
       <ToastContainer />
     </div>
