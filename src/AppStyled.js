@@ -13,7 +13,7 @@ export const StyledNavLink = styled(NavLink)`
   border: 1px solid black;
   border-radius: 10px;
   display: inline-block;
-  padding: 20px;
+  padding: 10px;
   font-size: 22px;
   text-decoration: none;
   margin-right: 15px;

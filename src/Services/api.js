@@ -52,11 +52,8 @@ export const requestDeleteContact = async contactId => {
   return data;
 };
 
-export const requestUpdateContact = async contactId => {
-  const { data } = await phonebookInstance.patch(
-    `/contacts/${contactId.id}`,
-    contactId
-  );
+export const requestUpdateContact = async ({ id, ...contactId }) => {
+  const { data } = await phonebookInstance.patch(`/contacts/${id}`, contactId);
 
   return data;
 };

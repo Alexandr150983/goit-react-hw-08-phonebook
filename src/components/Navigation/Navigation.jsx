@@ -1,36 +1,40 @@
-import { StyledNavLink } from 'AppStyled';
+import React from 'react';
+import { Box, Flex, Link } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { selectAuthAuthenticated } from 'redux/Auth/selectors';
 import UserMenu from 'components/UserMenu/UserMenu';
+import { StyledNavLink } from 'AppStyled';
 
 const Navigation = () => {
   const authenticated = useSelector(selectAuthAuthenticated);
 
   return (
-    <header>
-      <nav>
-        <StyledNavLink className="header-link" to="/">
+    <Box as="header" bgColor="teal" color="white" p={4}>
+      <Flex justify="space-between">
+        <Link as={StyledNavLink} to="/" fontSize="xl">
           Home
-        </StyledNavLink>
-        {authenticated ? (
-          <>
-            <StyledNavLink className="header-link" to="/contacts">
-              Contacts
-            </StyledNavLink>{' '}
-            <UserMenu />
-          </>
-        ) : (
-          <>
-            <StyledNavLink className="header-link" to="/login">
-              Login
-            </StyledNavLink>
-            <StyledNavLink className="header-link" to="/register">
-              Register
-            </StyledNavLink>
-          </>
-        )}
-      </nav>
-    </header>
+        </Link>
+        <Flex align="center">
+          {authenticated ? (
+            <>
+              <Link as={StyledNavLink} to="/contacts" mr={4}>
+                Contacts
+              </Link>
+              <UserMenu />
+            </>
+          ) : (
+            <>
+              <Link as={StyledNavLink} to="/login" mr={4}>
+                Login
+              </Link>
+              <Link as={StyledNavLink} to="/register">
+                Register
+              </Link>
+            </>
+          )}
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
 

@@ -1,5 +1,6 @@
-import React, { lazy, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ChakraProvider, Box } from '@chakra-ui/react';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'components/PrivateRoute';
 import RestictedRoute from 'components/RestrictedRoute';
@@ -8,12 +9,10 @@ import Loader from 'components/Loader';
 import { Suspense } from 'react';
 import { selectAuthIsLoading } from 'redux/Auth/selectors';
 import Navigation from 'components/Navigation/Navigation';
-import { StyledAppContainer } from 'AppStyled';
-
-const HomePage = lazy(() => import('./Pages/Home'));
-const RegisterPage = lazy(() => import('./Pages/Register'));
-const LoginPage = lazy(() => import('./Pages/Login'));
-const ContactsPage = lazy(() => import('./Pages/Contacts'));
+import HomePage from './Pages/Home';
+import RegisterPage from './Pages/Register';
+import LoginPage from './Pages/Login';
+import ContactsPage from './Pages/Contacts';
 
 const appRoutes = [
   { path: '/', element: <HomePage /> },
@@ -52,20 +51,25 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <StyledAppContainer>
-      <Navigation />
-
-      {isRefreshing ? (
-        <Loader />
-      ) : (
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            {appRoutes.map(({ path, element }) => (
-              <Route key={path} path={path} element={element} />
-            ))}
-          </Routes>
-        </Suspense>
-      )}
-    </StyledAppContainer>
+    <ChakraProvider>
+      {' '}
+      <Box bg="gray.100" minHeight="100vh">
+        {' '}
+        <Navigation />
+        <Box p={4}>
+          {isRefreshing ? (
+            <Loader />
+          ) : (
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                {appRoutes.map(({ path, element }) => (
+                  <Route key={path} path={path} element={element} />
+                ))}
+              </Routes>
+            </Suspense>
+          )}
+        </Box>
+      </Box>
+    </ChakraProvider>
   );
 };
