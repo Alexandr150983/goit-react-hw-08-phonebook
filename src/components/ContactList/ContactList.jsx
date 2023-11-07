@@ -62,17 +62,29 @@ export const ContactList = () => {
   };
 
   const handleSaveUpdate = () => {
-    const updatedContact = {
-      id: editingContact.id,
-      name: editingContact.name,
-      number: editingContact.number,
-    };
-    dispatch(updateContact(updatedContact));
+    if (
+      editingContact.name !==
+        contacts.find(c => c.id === editingContact.id).name ||
+      editingContact.number !==
+        contacts.find(c => c.id === editingContact.id).number
+    ) {
+      const updatedContact = {
+        id: editingContact.id,
+        name: editingContact.name,
+        number: editingContact.number,
+      };
+      dispatch(updateContact(updatedContact));
 
-    toast.success('Контакт успішно оновлено!', {
-      position: 'top-right',
-      autoClose: 3000,
-    });
+      toast.success('Контакт успішно оновлено!', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+    } else {
+      toast.info('Контакт не було оновлено, оскільки дані не змінилися.', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+    }
 
     setEditingContact(null);
   };
