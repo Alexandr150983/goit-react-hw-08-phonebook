@@ -191,7 +191,7 @@ export const ContactList = () => {
               colorScheme="teal"
             />
           }
-          containerClassName="pagination" // Додайте клас контейнера
+          containerClassName="pagination"
         />
       </Flex>
     </Box>
