@@ -38,7 +38,7 @@ export function ContactForm() {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (values, { resetForm, setSubmitting }) => {
       if (
         contacts.some(
           contact =>
@@ -49,6 +49,7 @@ export function ContactForm() {
           position: 'top-right',
           autoClose: 3000,
         });
+        setSubmitting(false);
       } else {
         const newContact = {
           name: values.name,
