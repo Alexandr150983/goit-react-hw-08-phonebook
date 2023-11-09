@@ -9,10 +9,10 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import contactPersistConfig from './Contact/persistConfig';
-import { authReducer } from './Auth/slice';
-import authPersistConfig from './Auth/persistConfig';
-import { contactsReducer } from './Contact/contactsSlice';
+import contactPersistConfig from './contact/persistConfig';
+import { authReducer } from './auth/slice';
+import authPersistConfig from './auth/persistConfig';
+import { contactsReducer } from './contact/contactsSlice';
 
 export const store = configureStore({
   reducer: {

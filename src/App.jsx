@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ChakraProvider, Box } from '@chakra-ui/react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'components/PrivateRoute';
 import RestictedRoute from 'components/RestrictedRoute';
-import { refreshThunk } from 'redux/Auth/operations';
+import { refreshThunk } from 'redux/auth/operations';
 import Loader from 'components/Loader';
 import { Suspense } from 'react';
-import { selectAuthIsLoading } from 'redux/Auth/selectors';
+import { selectAuthIsLoading } from 'redux/auth/selectors';
 import Navigation from 'components/Navigation/Navigation';
-import HomePage from './Pages/Home';
-import RegisterPage from './Pages/Register';
-import LoginPage from './Pages/Login';
-import ContactsPage from './Pages/Contacts';
+import { lazy } from 'react';
+
+const HomePage = lazy(() => import('pages/Home'));
+const RegisterPage = lazy(() => import('pages/Register'));
+const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts'));
 
 const appRoutes = [
   { path: '/', element: <HomePage /> },
@@ -39,6 +41,10 @@ const appRoutes = [
         <ContactsPage />
       </PrivateRoute>
     ),
+  },
+  {
+    path: '*',
+    element: <Navigate to="/" />,
   },
 ];
 

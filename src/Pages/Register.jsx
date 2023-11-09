@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { registerThunk } from 'redux/Auth/operations';
+import { registerThunk } from 'redux/auth/operations';
 import {
   Box,
   Button,

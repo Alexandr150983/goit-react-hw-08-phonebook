@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex, Link } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { selectAuthAuthenticated } from 'redux/Auth/selectors';
+import { selectAuthAuthenticated } from 'redux/auth/selectors';
 import UserMenu from 'components/UserMenu/UserMenu';
 import { StyledNavLink } from 'AppStyled';
 
