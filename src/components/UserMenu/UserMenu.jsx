@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Text, Button } from '@chakra-ui/react';
-import { logOutThunk } from 'redux/auth/operations';
-import { selectAuthUserEmail } from 'redux/auth/selectors';
+import { logOutThunk } from 'redux/Auth/operations';
+import { selectAuthUserEmail } from 'redux/Auth/selectors';
 
 const UserMenu = () => {
   const userEmail = useSelector(selectAuthUserEmail);

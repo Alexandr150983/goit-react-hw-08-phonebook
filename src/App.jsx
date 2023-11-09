@@ -4,17 +4,17 @@ import { ChakraProvider, Box } from '@chakra-ui/react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'components/PrivateRoute';
 import RestictedRoute from 'components/RestrictedRoute';
-import { refreshThunk } from 'redux/auth/operations';
+import { refreshThunk } from 'redux/Auth/operations';
 import Loader from 'components/Loader';
 import { Suspense } from 'react';
-import { selectAuthIsLoading } from 'redux/auth/selectors';
+import { selectAuthIsLoading } from 'redux/Auth/selectors';
 import Navigation from 'components/Navigation/Navigation';
 import { lazy } from 'react';
 
-const HomePage = lazy(() => import('pages/Home'));
-const RegisterPage = lazy(() => import('pages/Register'));
-const LoginPage = lazy(() => import('pages/Login'));
-const ContactsPage = lazy(() => import('pages/Contacts'));
+const HomePage = lazy(() => import('Pages/Home'));
+const RegisterPage = lazy(() => import('Pages/Register'));
+const LoginPage = lazy(() => import('Pages/Login'));
+const ContactsPage = lazy(() => import('Pages/Contacts'));
 
 const appRoutes = [
   { path: '/', element: <HomePage /> },

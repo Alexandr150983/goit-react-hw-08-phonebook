@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { selectAuthAuthenticated } from 'redux/auth/selectors';
+import { selectAuthAuthenticated } from 'redux/Auth/selectors';
 
 const PrivateRoute = ({ children, redirectTo = '/login' }) => {
   const authenticated = useSelector(selectAuthAuthenticated);

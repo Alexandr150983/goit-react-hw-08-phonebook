@@ -11,10 +11,10 @@ import {
   FormErrorMessage,
   Heading,
 } from '@chakra-ui/react';
-import { selectContacts } from 'redux/contact/selectors';
+import { selectContacts } from 'redux/Contact/selectors';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addContact } from 'redux/contact/operations';
+import { addContact } from 'redux/Contact/operations';
 
 const validationSchema = Yup.object({
   name: Yup.string().min(3, 'Must be at least 3 characters long').required(),

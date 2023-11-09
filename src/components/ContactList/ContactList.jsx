@@ -14,12 +14,12 @@ import {
   selectContacts,
   selectContactsIsLoading,
   selectContactsError,
-} from 'redux/contact/selectors';
+} from 'redux/Contact/selectors';
 import {
   deleteContact,
   fetchContacts,
   updateContact,
-} from 'redux/contact/operations';
+} from 'redux/Contact/operations';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactPaginate from 'react-paginate';
